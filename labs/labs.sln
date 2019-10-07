@@ -105,6 +105,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_41_entity_code_first_fr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_42_EFCore_From_Scratch", "lab_42_EFCore_From_Scratch\lab_42_EFCore_From_Scratch.csproj", "{58861E63-D614-4EFC-93D6-A52F612B6AAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_43_asp_entity_core", "lab_43_asp_entity_core\lab_43_asp_entity_core.csproj", "{24D587A9-9D60-4308-BD69-5CD467FEE978}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -315,6 +317,10 @@ Global
 		{58861E63-D614-4EFC-93D6-A52F612B6AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58861E63-D614-4EFC-93D6-A52F612B6AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58861E63-D614-4EFC-93D6-A52F612B6AAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D587A9-9D60-4308-BD69-5CD467FEE978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D587A9-9D60-4308-BD69-5CD467FEE978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D587A9-9D60-4308-BD69-5CD467FEE978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D587A9-9D60-4308-BD69-5CD467FEE978}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

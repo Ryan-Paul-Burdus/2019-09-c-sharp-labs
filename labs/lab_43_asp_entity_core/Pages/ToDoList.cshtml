@@ -1,0 +1,27 @@
+﻿@page
+@model lab_43_asp_entity_core.Pages.ToDoListModel
+@{
+    ViewData["Title"] = "ToDoList";
+}
+
+<h2>ToDoList</h2>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>To Do</th>
+            <th>Date Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var todo in @Model.todos)
+        {
+            <tr>
+                <td>@todo.ToDoItemId</td>
+                <td>@todo.ToDoItemName</td>
+                <td>@todo.DateCreated</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -18,10 +18,13 @@ namespace lab_42_EFCore_From_Scratch
                     DateCreated = DateTime.Now
                 };
                 db.ToDoItems.Add(todo);
+                db.ToDoItems.Add(todo);
+                db.ToDoItems.Add(todo);
+                db.ToDoItems.Add(todo);
                 db.SaveChanges();
             }
 
-            System.Threading.Thread.Sleep(1000);
+            //System.Threading.Thread.Sleep(1000);
             using (var db = new ToDoItemContext())
             {
                 todos = db.ToDoItems.ToList();
@@ -47,7 +50,9 @@ namespace lab_42_EFCore_From_Scratch
 
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ToDoDatabase;Integrated Security=true;MultipleActiveResultSets=true;");
+            //builder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ToDoDatabase;Integrated Security=true;MultipleActiveResultSets=true;");
+
+            builder.UseSqlite("Data source=ToDoDatabase.db");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
