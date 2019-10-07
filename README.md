@@ -1,4 +1,5 @@
 # 2019-09-c-sharp-labs
+### Created by Ryan Burdus at 27/08/2019
 labs built and run while learning C#. 
 
 ## Some subjects learnt in this Repo
@@ -16,12 +17,12 @@ labs built and run while learning C#.
 
 - Rabbit CRUD app
 
-![alt text]()
+![alt text](https://github.com/Ryan-Paul-Burdus/2019-09-c-sharp-labs/blob/master/Screenshots/Rabbit%20CRUD.png "Rabbit CRUD app")
 
 - Northwind customer app 
 
-![alt text]()
+![alt text](https://github.com/Ryan-Paul-Burdus/2019-09-c-sharp-labs/blob/master/Screenshots/northwindustomer%20app.png "Northwind customer app")
 
 - Customer database search app
 
-![alt text]()
+![alt text](https://github.com/Ryan-Paul-Burdus/2019-09-c-sharp-labs/blob/master/Screenshots/Customer%20database%20app.png "Customer Database app")
