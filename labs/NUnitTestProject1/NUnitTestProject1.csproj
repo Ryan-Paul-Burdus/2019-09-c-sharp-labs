@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -10,12 +10,6 @@
     <PackageReference Include="nunit" Version="3.10.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\just-do-it-11-rabbit-explosion\just-do-it-11-rabbit-explosion.csproj" />
-    <ProjectReference Include="..\lab_12_test_me_out\lab_12_test_me_out.csproj" />
-    <ProjectReference Include="..\lab_just_Do_It_17_enum_With_Tests\lab_just_Do_It_17_enum_With_Tests.csproj" />
   </ItemGroup>
 
 </Project>
