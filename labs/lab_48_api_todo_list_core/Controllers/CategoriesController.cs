@@ -6,64 +6,61 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lab_48_api_todo_list_core;
-using System.Diagnostics;
-using System.Threading;
 
 namespace lab_48_api_todo_list_core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TaskItemsController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly TaskItemContext _context;
 
-        public TaskItemsController(TaskItemContext context)
+        public CategoriesController(TaskItemContext context)
         {
             _context = context;
         }
 
-        // GET: api/TaskItems
+        // GET: api/Categories
         [HttpGet]
-        public List<TaskItem> GetTaskItems()
+        public IEnumerable<Category> GetCategories()
         {
-            var TI = _context.TaskItems.Include(t => t.User).Include(t => t.Category);
-            return TI.ToList();
+            return _context.Categories;
         }
 
-        // GET: api/TaskItems/5
+        // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTaskItem([FromRoute] int id)
+        public async Task<IActionResult> GetCategory([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var taskItem = await _context.TaskItems.FindAsync(id);
+            var category = await _context.Categories.FindAsync(id);
 
-            if (taskItem == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return Ok(taskItem);
+            return Ok(category);
         }
 
-        // PUT: api/TaskItems/5
+        // PUT: api/Categories/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTaskItem([FromRoute] int id, [FromBody] TaskItem taskItem)
+        public async Task<IActionResult> PutCategory([FromRoute] int id, [FromBody] Category category)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != taskItem.TaskItemId)
+            if (id != category.CategoryId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(taskItem).State = EntityState.Modified;
+            _context.Entry(category).State = EntityState.Modified;
 
             try
             {
@@ -71,7 +68,7 @@ namespace lab_48_api_todo_list_core.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TaskItemExists(id))
+                if (!CategoryExists(id))
                 {
                     return NotFound();
                 }
@@ -84,45 +81,45 @@ namespace lab_48_api_todo_list_core.Controllers
             return NoContent();
         }
 
-        // POST: api/TaskItems
+        // POST: api/Categories
         [HttpPost]
-        public async Task<IActionResult> PostTaskItem([FromBody] TaskItem taskItem)
+        public async Task<IActionResult> PostCategory([FromBody] Category category)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.TaskItems.Add(taskItem);
+            _context.Categories.Add(category);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTaskItem", new { id = taskItem.TaskItemId }, taskItem);
+            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
         }
 
-        // DELETE: api/TaskItems/5
+        // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTaskItem([FromRoute] int id)
+        public async Task<IActionResult> DeleteCategory([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var taskItem = await _context.TaskItems.FindAsync(id);
-            if (taskItem == null)
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            _context.TaskItems.Remove(taskItem);
+            _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
 
-            return Ok(taskItem);
+            return Ok(category);
         }
 
-        private bool TaskItemExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.TaskItems.Any(e => e.TaskItemId == id);
+            return _context.Categories.Any(e => e.CategoryId == id);
         }
     }
 }

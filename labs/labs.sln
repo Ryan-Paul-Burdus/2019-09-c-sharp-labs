@@ -122,7 +122,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "just_do_it_Web_API_Northwin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "just_do_it_HTTP_Console_App", "just_do_it_HTTP_Console_App\just_do_it_HTTP_Console_App.csproj", "{412BCACE-1C2A-4622-992E-5A89B02DE397}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_48_api_todo_list_core", "lab_48_api_todo_list_core\lab_48_api_todo_list_core.csproj", "{D2EA6383-9E7E-41BC-8516-B4D011C02B0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lab_48_api_todo_list_core", "lab_48_api_todo_list_core\lab_48_api_todo_list_core.csproj", "{D2EA6383-9E7E-41BC-8516-B4D011C02B0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lab_48_read_api", "lab_48_read_api\lab_48_read_api.csproj", "{509BF543-6084-4ED1-9728-410446326BC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_48_mvc_crud_app", "lab_48_mvc_crud_app\lab_48_mvc_crud_app.csproj", "{A871A62E-787A-4834-A22D-ADB18F9DE4E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -366,6 +370,14 @@ Global
 		{D2EA6383-9E7E-41BC-8516-B4D011C02B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2EA6383-9E7E-41BC-8516-B4D011C02B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2EA6383-9E7E-41BC-8516-B4D011C02B0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{509BF543-6084-4ED1-9728-410446326BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509BF543-6084-4ED1-9728-410446326BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509BF543-6084-4ED1-9728-410446326BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509BF543-6084-4ED1-9728-410446326BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A871A62E-787A-4834-A22D-ADB18F9DE4E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A871A62E-787A-4834-A22D-ADB18F9DE4E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A871A62E-787A-4834-A22D-ADB18F9DE4E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A871A62E-787A-4834-A22D-ADB18F9DE4E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

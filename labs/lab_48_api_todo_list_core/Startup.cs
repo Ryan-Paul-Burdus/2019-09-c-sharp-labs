@@ -65,18 +65,22 @@ namespace lab_48_api_todo_list_core
         //foreign key, int? means it can be null
         public int? UserId { get; set; } //field
         public virtual User User { get; set; } // table
+
+        public int? CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 
     public class User
     {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+
+
         //public User()
         //{
         //    TaskItems = new HashSet<TaskItem>();
         //}
-
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-
         //public virtual ICollection<TaskItem> TaskItems { get; set; }
     }
 
@@ -84,6 +88,13 @@ namespace lab_48_api_todo_list_core
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+
+        //public Category()
+        //{
+        //    TaskItems = new HashSet<TaskItem>();
+        //}
+
+        //public virtual ICollection<TaskItem> TaskItems { get; set; }
     }
 
     public class TaskItemContext : DbContext
@@ -95,7 +106,7 @@ namespace lab_48_api_todo_list_core
             {
                 _dbCreated = true;
                 //Database.EnsureDeleted();
-                Database.EnsureCreated();
+                //Database.EnsureCreated();
                 Trace.WriteLine("Test data");
             }
         }
@@ -103,6 +114,27 @@ namespace lab_48_api_todo_list_core
         {
             builder.UseSqlite(@"Data Source=ToDoDatabase.db");
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Category>().HasData(
+                new Category { CategoryId = 1, CategoryName = "Category1" },
+                new Category { CategoryId = 2, CategoryName = "Category2" },
+                new Category { CategoryId = 3, CategoryName = "Category3" });
+
+            builder.Entity<User>().HasData(
+                new User { UserId = 1, UserName = "User1" },
+                new User { UserId = 2, UserName = "User2" },
+                new User { UserId = 3, UserName = "User3" },
+                new User { UserId = 4, UserName = "User4" });
+
+            builder.Entity<TaskItem>().HasData(
+                new TaskItem { TaskItemId = 1, Description = "Study", DateDue = DateTime.Parse("11/10/2019"), TaskDone = false, CategoryId = 2, UserId = 1},
+                new TaskItem { TaskItemId = 2, Description = "Work", DateDue = DateTime.Parse("10/10/2019"), TaskDone = false, CategoryId = 3, UserId = 3},
+                new TaskItem { TaskItemId = 3, Description = "Do nothing", DateDue = DateTime.Parse("12/10/2019"), TaskDone = false, CategoryId = 1, UserId = 4});
+
+        }
+
         public DbSet<TaskItem> TaskItems { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }

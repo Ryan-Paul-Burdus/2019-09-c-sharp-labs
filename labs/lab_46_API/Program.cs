@@ -10,7 +10,7 @@ namespace lab_46_API
 {
     public class Program
     {
-        static string url = "https://localhost:44341/api/products";
+        static string url = "https://localhost:44356/api/products";
         static List<Product> products = new List<Product>();
         static void Main(string[] args)
         {

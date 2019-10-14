@@ -6,64 +6,61 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using lab_48_api_todo_list_core;
-using System.Diagnostics;
-using System.Threading;
 
 namespace lab_48_api_todo_list_core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TaskItemsController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly TaskItemContext _context;
 
-        public TaskItemsController(TaskItemContext context)
+        public UsersController(TaskItemContext context)
         {
             _context = context;
         }
 
-        // GET: api/TaskItems
+        // GET: api/Users
         [HttpGet]
-        public List<TaskItem> GetTaskItems()
+        public IEnumerable<User> GetUsers()
         {
-            var TI = _context.TaskItems.Include(t => t.User).Include(t => t.Category);
-            return TI.ToList();
+            return _context.Users;
         }
 
-        // GET: api/TaskItems/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTaskItem([FromRoute] int id)
+        public async Task<IActionResult> GetUser([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var taskItem = await _context.TaskItems.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
 
-            if (taskItem == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(taskItem);
+            return Ok(user);
         }
 
-        // PUT: api/TaskItems/5
+        // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTaskItem([FromRoute] int id, [FromBody] TaskItem taskItem)
+        public async Task<IActionResult> PutUser([FromRoute] int id, [FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != taskItem.TaskItemId)
+            if (id != user.UserId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(taskItem).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
 
             try
             {
@@ -71,7 +68,7 @@ namespace lab_48_api_todo_list_core.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TaskItemExists(id))
+                if (!UserExists(id))
                 {
                     return NotFound();
                 }
@@ -84,45 +81,45 @@ namespace lab_48_api_todo_list_core.Controllers
             return NoContent();
         }
 
-        // POST: api/TaskItems
+        // POST: api/Users
         [HttpPost]
-        public async Task<IActionResult> PostTaskItem([FromBody] TaskItem taskItem)
+        public async Task<IActionResult> PostUser([FromBody] User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.TaskItems.Add(taskItem);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTaskItem", new { id = taskItem.TaskItemId }, taskItem);
+            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
-        // DELETE: api/TaskItems/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTaskItem([FromRoute] int id)
+        public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var taskItem = await _context.TaskItems.FindAsync(id);
-            if (taskItem == null)
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            _context.TaskItems.Remove(taskItem);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return Ok(taskItem);
+            return Ok(user);
         }
 
-        private bool TaskItemExists(int id)
+        private bool UserExists(int id)
         {
-            return _context.TaskItems.Any(e => e.TaskItemId == id);
+            return _context.Users.Any(e => e.UserId == id);
         }
     }
 }

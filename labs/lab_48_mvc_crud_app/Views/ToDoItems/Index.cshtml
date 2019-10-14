@@ -1,0 +1,39 @@
+﻿@model IEnumerable<lab_48_mvc_crud_app.TaskItem>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+<!--
+<p>
+    <a asp-action="Create">Create new</a>
+</p>
+    -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>TaskDone</th>
+            <th>DateDue</th>
+            <th>User</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TaskItemId)</td>
+            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            <td>@Html.DisplayFor(modelItem => item.TaskDone)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateDue)</td>
+            <td>@Html.DisplayFor(modelItem => item.User)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category)</td>
+        </tr>
+        }
+        
+    </tbody>
+    </table>
