@@ -6,7 +6,7 @@ select * from Products where QuantityPerUnit like '%bottle%'
 
 -- 1.3 
 select * from Products inner join Suppliers on Products.SupplierID = Suppliers.SupplierID 
-	where QuantityPerUnit like '%bottles%' 
+	where QuantityPerUnit like '%bottle%' 
 
 -- 1.4 
 select Products.CategoryID, COUNT(*) as 'count' from Products group by Products.CategoryID
@@ -68,16 +68,16 @@ select Suppliers.SupplierID, Suppliers.CompanyName, round(sum([Order Details].Un
 	inner join Suppliers on Products.SupplierID = Suppliers.SupplierID
 	group by Suppliers.SupplierID, CompanyName
 	having sum([Order Details].UnitPrice * [Order Details].Quantity * (1 - [Order Details].Discount)) > 10000
-	order by sum([Order Details].UnitPrice * [Order Details].Quantity * (1 - [Order Details].Discount)) asc
+	order by sum([Order Details].UnitPrice * [Order Details].Quantity * (1 - [Order Details].Discount)) desc
 
 -- 3.3
-select top 10 Orders.OrderID, convert(varchar, Orders.ShippedDate, 23) as 'Date', Customers.ContactName, 
+select top 10 Orders.OrderID, convert(varchar, Orders.OrderDate, 23) as 'Date', Customers.ContactName, 
 	format (sum([Order Details].UnitPrice * [Order Details].Quantity * (1 - [Order Details].Discount)), 'c')
 		as 'Spendings' from Orders 
 	inner join Customers on Orders.CustomerID = Customers.CustomerID
 	inner join [Order Details] on Orders.OrderID = [Order Details].OrderID
-	group by Orders.OrderID, Orders.ShippedDate, Customers.ContactName
-	having Orders.ShippedDate between dateadd(year, -1, max(Orders.ShippedDate)) and max(Orders.ShippedDate) 
+	group by Orders.OrderID, Orders.OrderDate, Customers.ContactName
+	having Orders.OrderDate between dateadd(year, -1, max(Orders.OrderDate)) and max(Orders.OrderDate) 
 	order by sum([Order Details].UnitPrice * [Order Details].Quantity * (1 - [Order Details].Discount)) desc
 
 select top 10 convert(varchar, Orders.ShippedDate, 23) as 'Date', Customers.ContactName, 
