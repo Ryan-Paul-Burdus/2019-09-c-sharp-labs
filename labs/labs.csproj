@@ -10,7 +10,7 @@
     <PackageReference Include="microsoft.entityframeworkcore.design" Version="2.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore.sqlite" Version="2.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="2.1.1" />
-    <PackageReference Include="newtonsoft.json" Version="12.0.2" />
+    <PackageReference Include="newtonsoft.json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>
